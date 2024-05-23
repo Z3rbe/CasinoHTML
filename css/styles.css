@@ -1,0 +1,159 @@
+html {
+    background-color: #9D938B;
+    height: 100%;
+}
+body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: #030530;
+    display: flex;
+    height: 20vh;
+    color: #9D938B;
+    margin-bottom: 3%;
+}
+
+.nav-latteral {
+    position: absolute;
+    top: 1%;
+    left: -100%;
+    background-color: #030530;
+    z-index: 3;
+    height: 100vh;
+    width: max-content;
+    transition: all 0.1s ease;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#nav-wrapper.active {
+    display: block;
+}
+
+#nav-close {
+    color: #9D938B;
+}
+
+#nav-close:hover{
+    color: white;
+}
+
+.nav-links {
+    padding: 1rem 6rem 1rem 3rem;
+}
+
+.nav-link {
+    color: #9D938B;
+    cursor: pointer;
+    font-size: 25px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+.nav-link ion-icon {
+    margin-right: 15px;
+}
+
+.nav-link, .nav-button {
+    transition: all 0.2s ease;
+}
+
+.nav-button{   
+    color: #9D938B;
+    font-size: 40px;
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-button:hover {
+    color: white;
+}
+
+.header-img{
+    width: 80%;
+    height: 100%;
+    margin: auto;
+}
+
+#user-icone{
+    color: #9D938B;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5%;
+}
+
+#user-icone ion-icon{
+    font-size: 40px;
+    margin-left: 25%;
+}
+
+#user-icone p{
+    font-size: 15px;
+    margin: 0;
+}
+
+#user-icone:hover{
+    color: white;
+}
+
+
+footer{
+    background-color: #030530;
+    color: #9D938B;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    padding: 20px 0 15px 0;
+    margin-top: 3%;
+}
+
+footer a{
+    color: #9D938B;
+    border: 2px solid #9D938B;
+    border-radius: 25px;
+    font-size: 25px;
+    justify-content: center;
+    padding: 5px;
+}
+
+footer a:hover{
+    color: white;
+    border: 2px solid white;
+}
+
+section{
+    text-align: center;
+}
+
+.nav-image{
+    border: 2px solid #030530;
+    border-radius: 25px;
+    width: 42%;
+    margin: 0 3% 0 3%;
+}
+.nav-image:hover{
+    border: 2px solid white;
+}
+
+a{
+    text-decoration-line: none;
+}
+
+#token-user{
+    position: absolute;
+    top: 90px;
+    right: 15px;
+    font-size: 23px;
+}

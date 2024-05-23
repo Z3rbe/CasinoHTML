@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" href="../css/styles.css">
+    <link rel= "stylesheet" href="../css/style-signup.css">
+    <script src="../javascript/Token.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div>
+            <p id="token-user"></p>
+        </div>
+        <div id="nav-latteral" class="nav-latteral">
+            <div id="nav-close" class="nav-button">
+                <ion-icon name="close"></ion-icon>
+            </div>
+            <div class="nav-links">
+                <a class="nav-link" href="./Accueil.html">
+                    <ion-icon name="home-outline"></ion-icon>
+                    Accueil
+                </a>
+                <a class="nav-link" href="./Depot-witchdraw.html">
+                    <ion-icon name="wallet-outline"></ion-icon>
+                    Compte
+                </a>
+                <a class="nav-link" href="./Roulette.html">
+                    <ion-icon name="nuclear-outline"></ion-icon>
+                    Roulette
+                </a>
+                <a class="nav-link" href="./BlackJack.html">
+                    <ion-icon name="dice-outline"></ion-icon>
+                    BlackJack
+                </a>
+            </div>
+        </div>
+        <div id="nav-wrapper"></div>
+        <nav>
+            <div id="nav-open" class="nav-button">
+                <ion-icon name="reorder-three"></ion-icon>
+            </div>
+        </nav>
+
+        <img class="header-img" src="../Image/DALL·E_header.png" alt="DALL·E_header">
+
+        <a id="user-icone" href="./LogIn.html">
+            <ion-icon name="person-outline"></ion-icon>
+            <p id="user-text">Log In/ Sign Up</p>
+        </a>
+    </header>
+
+    <section>
+        <div class="form-container">
+            <p class="title">Sign Up</p>
+            <form class="form">
+                <div class="input-group">
+                    <label for="username">Email</label>
+                    <input type="email" name="email" id="email" placeholder="">
+                </div>
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="">
+                </div>
+                <div class="input-group">
+                    <label for="username">First Name</label>
+                    <input type="text" name="firstname" id="firstname" placeholder="">
+                </div>
+                <div class="input-group">
+                    <label for="username">Last Name</label>
+                    <input type="tel" name="lastname" id="lastname" placeholder="">
+                </div>
+                <div class="input-group">
+                    <label for="username">Birth Date</label>
+                    <input type="date" name="birth" id="birhtdate" placeholder="">
+                </div>
+                <div class="input-group">
+                    <label for="username">Phone Number</label>
+                    <input type="text" name="phone" id="phonenumber" placeholder="">
+                </div>
+                <div class="input-group">
+                    <label for="username">Adress</label>
+                    <input type="text" name="adress" id="adress" placeholder="">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="">
+                </div>
+                <div class="input-group">
+                    <label for="password">Confirm Password</label>
+                    <input type="password" name="password" id="confirmpassword" placeholder="">
+                </div>
+                <button class="sign">Sign Up</button>
+            </form>
+            <p class="login">Already have an account ?
+                <a rel="noopener noreferrer" href="./LogIn.html" class="">Log In</a>
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <a href="./apropos.html">À propos </a>
+        <p>©️2024 Fraccaro Meltz Monie.</p>
+        <p>Tous droits réservés.</p>
+    </footer>
+
+    <script src="../javascript/nav-bar.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

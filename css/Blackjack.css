@@ -1,0 +1,64 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header{
+    margin-bottom: 0px;
+}
+
+#dealer-cards img {
+    height: 200px;
+    width: 150px;
+    margin: 1px;
+}
+
+#your-cards img {
+    height: 200px;
+    width: 150px;
+    margin: 1px;
+}
+
+#hit {
+    height: 50px;
+    width: 100px;
+    font-size: 20px;
+    margin: 1px;
+    border-radius: 5px;
+}
+
+#stay {
+    height: 50px;
+    width: 100px;
+    font-size: 20px;
+    margin: 1px;
+    border-radius: 5px;
+}
+
+#reset {
+    display: none;
+    height: 50px;
+    width: 100px;
+    font-size: 20px;
+    margin: 1px;
+    border-radius: 5px;
+}
+
+#result {
+    display: none;
+    height: 50px;
+    width: 100px;
+    font-size: 20px;
+    margin: 1px;
+    border-radius: 5px;
+}
+
+section {
+    background-image: url('..//Image/istockphoto-647392618-2048x2048\ \(2\).jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 85%;
+}
+
+h2 {
+    color:rgb(255, 255, 255);
+}
