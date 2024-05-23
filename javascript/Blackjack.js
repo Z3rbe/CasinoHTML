@@ -7,12 +7,7 @@ var hidden;
 var deck;
 
 var canHit = true; 
-
-window.onload = function () {
-    buildDeck();
-    shuffleDeck();
-    startGame();
-}
+var mise = 0;
 
 function refresh(){
     location.reload();
@@ -113,7 +108,7 @@ function stay() {
                 message = "Gagner !";
             }
             else if (yourSum == dealerSum) {
-                message = " Egalite !";
+                message = "Egalite !";
             }
             else if (yourSum > dealerSum) {
                 message = "Gagner !";
@@ -121,7 +116,13 @@ function stay() {
             else if (yourSum < dealerSum) {
                 message = "Perdu !";
             }
-
+            
+            if(message == "Gagner !"){
+                updateTokenAdd(mise*2);
+            }
+            else if(message == "Egalite !"){
+                updateTokenAdd(mise);
+            }
             document.getElementById("dealer-sum").innerText = dealerSum;
             document.getElementById("your-sum").innerText = yourSum;
             document.getElementById("result").innerText = message;
@@ -156,3 +157,41 @@ function reduceAce(playerSum, playerAceCount) {
     }
     return playerSum;
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    const menu = document.getElementById("Menu-mise");
+    const closeBtn = document.getElementById("closeBtn");
+    const scoreDisplay = document.getElementById("score");
+    const buttons = document.querySelectorAll("button[id]")
+    scoreDisplay.textContent = "Mise : " + mise + " €";
+
+    menu.classList.remove("off");
+
+    closeBtn.addEventListener("click", function() {
+        if(!checkToken(mise)){
+            alert("Solde Inferieur à la mise");
+        }
+        else{
+            updateTokenSup(mise);
+            menu.classList.add("off");
+            buildDeck();
+            shuffleDeck();
+            startGame();
+        }
+    });
+
+    buttons.forEach(button => {
+        button.addEventListener("click", function(){
+            const value = parseInt(button.id, 10);
+            if (!isNaN(value)) {
+                if(value == 0){
+                    mise = 0;
+                }
+                else{
+                    mise += value;
+                }
+                scoreDisplay.textContent = "Mise : " + mise + " €";
+            }
+        });
+    });
+});
