@@ -91,3 +91,11 @@ br {
 p {
     color : white;
 }
+
+#Token-use{
+    position: absolute;
+    top: 350px;
+    left: 150px;
+    font-size: 35px;
+    display: none;
+}

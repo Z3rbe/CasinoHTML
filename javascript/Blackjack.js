@@ -32,7 +32,6 @@ function shuffleDeck() {
         deck[i] = deck[j];
         deck[j] = temp;
     }
-    console.log(deck);
 }
 function startGame() {
     hidden = deck.pop();
@@ -109,6 +108,7 @@ function stay() {
             }
             else if (yourSum == dealerSum) {
                 message = "Egalite !";
+                updateTokenAdd(mise);
             }
             else if (yourSum > dealerSum) {
                 message = "Gagner !";
@@ -119,9 +119,9 @@ function stay() {
             
             if(message == "Gagner !"){
                 updateTokenAdd(mise*2);
-            }
-            else if(message == "Egalite !"){
-                updateTokenAdd(mise);
+            } 
+            else if (yourSum == 21){
+                updateTokenAdd(((mise*2)+(mise*0.5)));
             }
             document.getElementById("dealer-sum").innerText = dealerSum;
             document.getElementById("your-sum").innerText = yourSum;
@@ -173,6 +173,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         else{
             updateTokenSup(mise);
+            printTokenUse();
             menu.classList.add("off");
             buildDeck();
             shuffleDeck();
@@ -195,3 +196,8 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+function printTokenUse(){
+    document.getElementById("Token-use").style.display = "block";
+    document.getElementById("Token-use").innerText = "Mise : " + mise +" €";
+}
