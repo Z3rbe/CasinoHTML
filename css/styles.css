@@ -88,6 +88,7 @@ header{
 }
 
 #user-icone{
+    height: 60px;
     color: #9D938B;
     align-items: center;
     justify-content: center;
