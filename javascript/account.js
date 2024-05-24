@@ -30,6 +30,9 @@ class Player{
     set adressPlayer(adress){this.adress = adress;}
     set passwordPlayer(password){this.password = password;}
     set tokenPlayer(token){this.token = token;}
+
+    addToken(token){this.token += token;}
+    removeToken(token){this.token -= token;}
 }
 
 function logIn(){
@@ -48,10 +51,21 @@ function signIn(){
     let password = document.getElementById('password');
     let confirmpassword = document.getElementById('confirmpassword');
 
-
+    if(password.value != confirmpassword.value){
+        alert("Vous devez rentrer le même mot de passe.");
+    } 
+    else if(email.value === "" || username.value === "" || firstname.value === "" || lastname.value === "" || birthdate.value == "" || phonenumber.value === "" || adress.value === "" || password.value === "" || confirmpassword.value === ""){
+        alert("Vous devez remplir tous les champs");
+    }
+    else{
+        let user = new Player(email, username, firstname, lastname, birthdate, phonenumber, adress, password);
+        /*On log le frerot*/
+    }
 }
 
 function isNewUser(username, password){
     /*On récupère de l'API*/
-    
+    /*On check si il existe dans l'API*/
+    /*Si oui on log le reuf sinon message d'erreur*/
+
 }
