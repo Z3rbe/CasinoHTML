@@ -1,5 +1,5 @@
 class Player{
-    constructor(email, username, firstname, lastname, birthdate, phonenumber, adress, password){
+    constructor(email, username, firstname, lastname, birthdate, phonenumber, adress, password, token){
         this.email = email;
         this.username = username;
         this.firstname = firstname;
@@ -8,7 +8,7 @@ class Player{
         this.phonenumber = phonenumber;
         this.adress = adress;
         this.password = password;
-        this.token = 0;
+        this.token = token;
     }
 
     get emailPlayer(){return this.email;}
@@ -33,14 +33,29 @@ class Player{
 
     addToken(token){this.token += token;}
     removeToken(token){this.token -= token;}
+
+    displayPlayer(){
+        /*On modifie le blase et l'image dans le header/*
+        /*On affiche les token*/
+    }
 }
 
+
 function logIn(){
+    /*ON récupère les identifiants de connexion*/
     let username = document.getElementById('username');
     let password = document.getElementById('password');
 }
 
+function isNewUser(username, password){
+    /*On récupère de l'API*/
+    /*On check si il existe dans l'API*/
+    /*Si oui on log le reuf sinon message d'erreur*/
+
+}
+
 function signIn(){
+    /*On récupère les éléments*/
     let email = document.getElementById('email');
     let username = document.getElementById('username');
     let firstname = document.getElementById('firstname');
@@ -51,6 +66,7 @@ function signIn(){
     let password = document.getElementById('password');
     let confirmpassword = document.getElementById('confirmpassword');
 
+    /*On vérifie si les mot de passe corresponde et si tous les champs sont rempli*/
     if(password.value != confirmpassword.value){
         alert("Vous devez rentrer le même mot de passe.");
     } 
@@ -58,14 +74,6 @@ function signIn(){
         alert("Vous devez remplir tous les champs");
     }
     else{
-        let user = new Player(email, username, firstname, lastname, birthdate, phonenumber, adress, password);
-        /*On log le frerot*/
+        var player = new Player(email, username, firstname, lastname, birthdate, phonenumber, adress, password, 0);
     }
-}
-
-function isNewUser(username, password){
-    /*On récupère de l'API*/
-    /*On check si il existe dans l'API*/
-    /*Si oui on log le reuf sinon message d'erreur*/
-
 }

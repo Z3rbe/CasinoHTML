@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel= "stylesheet" href="../css/styles.css">
     <link rel= "stylesheet" href="../css/style-signup.css">
+    <script src="../javascript/account.js"></script>
     <script src="../javascript/Token.js"></script>
     <title>Document</title>
 </head>
@@ -91,7 +92,7 @@
                     <label for="password">Confirm Password</label>
                     <input type="password" name="password" id="confirmpassword" placeholder="">
                 </div>
-                <button class="sign">Sign Up</button>
+                <input type="button" name="button" class="sign" id="sign_button" value="Sign Up" placeholder="" onclick="signIn()">
             </form>
             <p class="login">Already have an account ?
                 <a rel="noopener noreferrer" href="./LogIn.html" class="">Log In</a>
