@@ -35,23 +35,65 @@ class Player{
     removeToken(token){this.token -= token;}
 
     displayPlayer(){
-        /*On modifie le blase et l'image dans le header/*
+        /*On modifie le nom*/
+        document.getElementById('user-text').textContent = this.username;
+
         /*On affiche les token*/
+        var tokenP = document.createElement('p');
+        tokenP.textContent = "Wallet: " + this.token;
+        document.getElementById('user-icone').appendChild(tokenP);
+        document.getElementById('user-icone').style.height = '80px';
     }
 }
 
+var players = [];
+let currentPlayer = null;
+
+function loadUsers(){
+    fetch('../json/players.json')
+        .then(response => response.json())
+        .then(users => {
+            users.forEach(user => {
+                let player = new Player(user.email, user.username, user.firstname, user.lastname, user.birthdate, user.phonenumber, user.adress, user.password, user.token);
+                players.push(player);
+            })
+        })
+        .catch(error => console.error('Error loading users:', error));
+}
+
+function isNewUser(username, password){
+    loadUsers();
+
+    /*On parcours l'API*/
+    for(let item of players){
+        if(item.username === username && item.password === password) return false;
+    }
+    return true; 
+}
+
+function logPlayer(player){
+    currentPlayer = player;
+    currentPlayer.displayPlayer();
+}
 
 function logIn(){
     /*ON récupère les identifiants de connexion*/
     let username = document.getElementById('username');
     let password = document.getElementById('password');
-}
 
-function isNewUser(username, password){
-    /*On récupère de l'API*/
-    /*On check si il existe dans l'API*/
-    /*Si oui on log le reuf sinon message d'erreur*/
-
+    /*On vérifie si les identifiants de connexion corresponde à un utilisateur*/
+    if(!isNewUser(username.value, password.value)){
+        for(let item of players){
+            if(item.username === username.value && item.password === password.value){
+                var player = new Player(item.email, item.username, item.firstname, item.lastname, item.birthdate, item.phonenumber, item.adress, item.password, item.token);
+                logPlayer(player);
+                break;
+            }    
+        }
+    }
+    else{
+        alert("Username ou Password incorrect");
+    }
 }
 
 function signIn(){
@@ -70,10 +112,16 @@ function signIn(){
     if(password.value != confirmpassword.value){
         alert("Vous devez rentrer le même mot de passe.");
     } 
-    else if(email.value === "" || username.value === "" || firstname.value === "" || lastname.value === "" || birthdate.value == "" || phonenumber.value === "" || adress.value === "" || password.value === "" || confirmpassword.value === ""){
+    else if(email.value === "" || username.value === "" || firstname.value === "" || lastname.value === "" || birthdate.value === "" || phonenumber.value === "" || adress.value === "" || password.value === "" || confirmpassword.value === ""){
         alert("Vous devez remplir tous les champs");
     }
     else{
-        var player = new Player(email, username, firstname, lastname, birthdate, phonenumber, adress, password, 0);
+        if(isNewUser(username, password)){
+            var newPlayer = new Player(email.value, username.value, firstname.value, lastname.value, birthdate.value, phonenumber.value, adress.value, password.value, 0);
+            players.push(newPlayer);
+
+            /*On le log*/
+            logPlayer(newPlayer);
+        }
     }
 }

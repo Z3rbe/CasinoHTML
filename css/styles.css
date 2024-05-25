@@ -88,16 +88,20 @@ header{
 }
 
 #user-icone{
-    height: 60px;
-    color: #9D938B;
+    display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
+    flex-direction: column;
+    height: 60px;
+    color: #9D938B;
     margin-top: 0.5%;
+    margin-right: 15px;
 }
 
 #user-icone ion-icon{
     font-size: 40px;
-    margin-left: 25%;
+    margin-bottom: 5px;
 }
 
 #user-icone p{
@@ -108,7 +112,6 @@ header{
 #user-icone:hover{
     color: white;
 }
-
 
 footer{
     background-color: #030530;

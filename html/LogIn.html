@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel= "stylesheet" href="../css/styles.css">
     <link rel= "stylesheet" href="../css/style-login.css">
+    <script src="../javascript/account.js"></script>
     <script src="../javascript/Token.js"></script>
     <title>Document</title>
 </head>
 <body>
     <header>
-        <div>
-            <p id="token-user"></p>
-        </div>
         <div id="nav-latteral" class="nav-latteral">
             <div id="nav-close" class="nav-button">
                 <ion-icon name="close"></ion-icon>
@@ -66,7 +64,7 @@
                         <a rel="noopener noreferrer" href="#">Forgot Password ?</a>
                     </div>
                 </div>
-                <input type="button" name="button" class="sign" id="sign_button" value="Sign In" placeholder="">
+                <input type="button" name="button" class="sign" id="sign_button" value="Sign In" placeholder="" onclick="logIn()">
             </form>
             <div class="social-message">
                 <div class="line"></div>

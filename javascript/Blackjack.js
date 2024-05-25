@@ -168,12 +168,12 @@ document.addEventListener("DOMContentLoaded", function() {
     menu.classList.remove("off");
 
     closeBtn.addEventListener("click", function() {
-        if(!checkToken(mise)){
+        if(mise <= currentPlayer.token){
             alert("Solde Inferieur à la mise");
         }
         else{
-            updateTokenSup(mise);
-            printTokenUse();
+            currentPlayer.token += mise;
+            currentPlayer.displayPlayer();
             menu.classList.add("off");
             buildDeck();
             shuffleDeck();
