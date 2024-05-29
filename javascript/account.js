@@ -11,62 +11,41 @@ class Player{
         this.token = token;
     }
 
-    get emailPlayer(){return this.email;}
-    get usernamePlayer(){return this.username;}
-    get firstnamePlayer(){return this.firstname;}
-    get lastnamePlayer(){return this.lastname;}
-    get birthdatePlayer(){return this.birthdate;}
-    get phonenumberPlayer(){return this.phonenumber;}
-    get adressPlayer(){return this.adress;}
-    get passwordPlayer(){return this.password;}
-    get tokenPlayer(){return this.token;}
-
-    set emailPlayer(email){this.email = email;}
-    set usernamePlayer(username){this.username = username;}
-    set firstnamePlayer(firstname){this.firstname = firstname;}
-    set lastnamePlayer(lastname){this.lastname = lastname;}
-    set birthdatePlayer(birthdate){this.birthdate = birthdate;}
-    set phonenumberPlayer(phonenumber){this.phonenumber = phonenumber}
-    set adressPlayer(adress){this.adress = adress;}
-    set passwordPlayer(password){this.password = password;}
-    set tokenPlayer(token){this.token = token;}
-
     addToken(token){this.token += token;}
     removeToken(token){this.token -= token;}
 
     displayPlayer(){
         /*On modifie le nom*/
         document.getElementById('user-text').textContent = this.username;
+        document.getElementById('user-wallet').textContent = "Wallet: " + this.token + " $";
 
-        /*On affiche les token*/
-        var tokenP = document.createElement('p');
-        tokenP.textContent = "Wallet: " + this.token;
-        document.getElementById('user-icone').appendChild(tokenP);
         document.getElementById('user-icone').style.height = '80px';
     }
 }
 
-var players = [];
-let currentPlayer = null;
+var currentPlayer = null;
 
-function loadUsers(){
-    fetch('../json/players.json')
-        .then(response => response.json())
-        .then(users => {
-            users.forEach(user => {
-                let player = new Player(user.email, user.username, user.firstname, user.lastname, user.birthdate, user.phonenumber, user.adress, user.password, user.token);
-                players.push(player);
-            })
-        })
-        .catch(error => console.error('Error loading users:', error));
+async function loadUsers(url) {
+    try {
+        const players = [];
+        const response = await fetch(url);
+        const users = await response.json();
+        users.forEach(user => {
+            let player = new Player(user.email, user.username, user.firstname, user.lastname, user.birthdate, user.phonenumber, user.adress, user.password, user.token);
+            players.push(player);
+        });
+        return players;
+    } catch (error) {
+        console.error('Error loading users:', error);
+        throw error;
+    }
 }
 
-function isNewUser(username, password){
-    loadUsers();
 
+function isNewUser(username, password, players){
     /*On parcours l'API*/
     for(let item of players){
-        if(item.username === username && item.password === password) return false;
+        if(item.username == username && item.password == password) return false;
     }
     return true; 
 }
@@ -76,27 +55,44 @@ function logPlayer(player){
     currentPlayer.displayPlayer();
 }
 
-function logIn(){
-    /*ON récupère les identifiants de connexion*/
-    let username = document.getElementById('username');
-    let password = document.getElementById('password');
+async function logIn() {
+    // On récupère l'API
+    let players;
+    try {
+        players = await loadUsers('../json/players.json');
+    } catch (error) {
+        console.error('Error loading players:', error);
+        return; // Arrête l'exécution si les joueurs ne peuvent pas être chargés
+    }
 
-    /*On vérifie si les identifiants de connexion corresponde à un utilisateur*/
-    if(!isNewUser(username.value, password.value)){
-        for(let item of players){
-            if(item.username === username.value && item.password === password.value){
-                var player = new Player(item.email, item.username, item.firstname, item.lastname, item.birthdate, item.phonenumber, item.adress, item.password, item.token);
-                logPlayer(player);
+    // On récupère les identifiants de connexion
+    let username = document.getElementById('username').value;
+    let password = document.getElementById('password').value;
+
+    // On vérifie si les identifiants de connexion correspondent à un utilisateur
+    if (!isNewUser(username, password, players)) {
+        for (let item of players) {
+            if (item.username === username && item.password === password) {
+                logPlayer(item);
                 break;
             }    
         }
-    }
-    else{
+    } else {
         alert("Username ou Password incorrect");
     }
 }
 
-function signIn(){
+
+async function signIn(){
+    // On récupère l'API
+    let players;
+    try {
+        players = await loadUsers('../json/players.json');
+    } catch (error) {
+        console.error('Error loading players:', error);
+        return; // Arrête l'exécution si les joueurs ne peuvent pas être chargés
+    }
+
     /*On récupère les éléments*/
     let email = document.getElementById('email');
     let username = document.getElementById('username');
@@ -116,12 +112,46 @@ function signIn(){
         alert("Vous devez remplir tous les champs");
     }
     else{
-        if(isNewUser(username, password)){
+        if(isNewUser(username, password, players)){
             var newPlayer = new Player(email.value, username.value, firstname.value, lastname.value, birthdate.value, phonenumber.value, adress.value, password.value, 0);
             players.push(newPlayer);
 
             /*On le log*/
             logPlayer(newPlayer);
+
+            //on sauvegarde le json
         }
     }
 }
+
+function saveCurrent() {
+    if (currentPlayer) {
+        let data = {
+            "username": currentPlayer.username,
+            "password": currentPlayer.password
+        };
+        sessionStorage.setItem('userData', JSON.stringify(data));
+    }
+}
+
+async function loadCurrent() {
+    try {
+        const players = await loadUsers('../json/players.json');
+        let jsonData = sessionStorage.getItem('userData');
+
+        if (jsonData) {
+            let data = JSON.parse(jsonData);
+            for (let item of players) {
+                if (item.username === data['username'] && item.password === data['password']) {
+                    logPlayer(item);
+                    break;
+                }
+            }
+        }
+    } catch (error) {
+        console.error('Error during loadCurrent:', error);
+    }
+}
+
+window.addEventListener('load', loadCurrent);
+window.addEventListener('beforeunload', saveCurrent);
