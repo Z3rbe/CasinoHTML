@@ -11,9 +11,16 @@ class Player{
         this.token = token;
     }
 
-    addToken(token){this.token += token;}
-    removeToken(token){this.token -= token;}
-
+    addToken(token){
+        this.token += token;
+        this.displayPlayer();
+    }
+    removeToken(token){
+        this.token -= token;
+        this.displayPlayer();
+    }
+    chekToken(mise){return mise <= this.token;}
+    
     displayPlayer(){
         /*On modifie le nom*/
         document.getElementById('user-text').textContent = this.username;
