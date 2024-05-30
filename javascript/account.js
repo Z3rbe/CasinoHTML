@@ -19,8 +19,8 @@ class Player{
         this.token -= token;
         this.displayPlayer();
     }
-    chekToken(mise){return mise <= this.token;}
-    
+    checkToken(mise){return mise <= this.token;}
+
     displayPlayer(){
         /*On modifie le nom*/
         document.getElementById('user-text').textContent = this.username;

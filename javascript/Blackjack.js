@@ -168,12 +168,12 @@ document.addEventListener("DOMContentLoaded", function() {
     menu.classList.remove("off");
 
     closeBtn.addEventListener("click", function() {
-        if(mise <= currentPlayer.token){
+        if(!currentPlayer.checkToken(mise)){
             alert("Solde Inferieur à la mise");
         }
         else{
-            currentPlayer.token += mise;
-            currentPlayer.displayPlayer();
+            currentPlayer.removeToken(mise);
+            printTokenUse();
             menu.classList.add("off");
             buildDeck();
             shuffleDeck();
@@ -196,3 +196,8 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+function printTokenUse(){
+    document.getElementById("Token-use").style.display = "block";
+    document.getElementById("Token-use").innerText = "Mise : " + mise +" €";
+}
