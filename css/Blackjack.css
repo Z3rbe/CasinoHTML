@@ -46,14 +46,18 @@ header{
     font-size: 20px;
     margin: 1px;
     border-radius: 5px;
+    color: white;
 }
 
-section {
-    background-image: url('..//Image/istockphoto-647392618-2048x2048\ \(2\).jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 85%;
+#main-section {
+    min-height: 54vh;
+    height: auto;
+    background-color: #016D29;
+    background-size: 100%;
     text-align: center;
+    margin-top: 3%;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 h2 {
@@ -86,11 +90,7 @@ h2 {
 
 br {
     margin-top: 20px;
-}
-
-p {
-    color : white;
-}
+}   
 
 #Token-use{
     position: absolute;

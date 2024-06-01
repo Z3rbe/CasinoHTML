@@ -135,7 +135,15 @@ function saveCurrent() {
     if (currentPlayer) {
         let data = {
             "username": currentPlayer.username,
-            "password": currentPlayer.password
+            "password": currentPlayer.password,
+            "email": currentPlayer.email,
+            "firstname": currentPlayer.firstname,
+            "lastname": currentPlayer.lastname,
+            "birthdate": currentPlayer.birthdate,
+            "phonenumber": currentPlayer.phonenumber,
+            "adress": currentPlayer.adress,
+            "password": currentPlayer.password,
+            "token": currentPlayer.token
         };
         sessionStorage.setItem('userData', JSON.stringify(data));
     }
@@ -150,7 +158,7 @@ async function loadCurrent() {
             let data = JSON.parse(jsonData);
             for (let item of players) {
                 if (item.username === data['username'] && item.password === data['password']) {
-                    logPlayer(item);
+                    logPlayer(new Player(data['email'], data['username'], data['firstname'], data['lastname'], data['birthdate'], data['phonenumber'], data['adress'], data['password'], data['token']));
                     break;
                 }
             }

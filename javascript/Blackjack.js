@@ -9,8 +9,33 @@ var deck;
 var canHit = true; 
 var mise = 0;
 
-function refresh(){
-    location.reload();
+function refresh() {
+    // Réinitialiser les variables de jeu
+    dealerSum = 0;
+    yourSum = 0;
+    dealerAceCount = 0;
+    yourAceCount = 0;
+    canHit = true; 
+    mise = 0;
+
+    // Vider les cartes affichées
+    document.getElementById("dealer-cards").innerHTML = "";
+    document.getElementById("your-cards").innerHTML = "";
+
+    // Masquer les résultats et le bouton de réinitialisation
+    document.getElementById("result").style.display = "none";
+    document.getElementById("reset").style.display = "none";
+
+    // Afficher les boutons hit et stay
+    document.getElementById("hit").style.display = "inline-block";
+    document.getElementById("stay").style.display = "inline-block";
+
+    // Afficher le menu de mise
+    document.getElementById("Menu-mise").classList.remove("off");
+
+    // Réinitialiser l'affichage des scores
+    document.getElementById("dealer-sum").innerText = dealerSum;
+    document.getElementById("your-sum").innerText = yourSum;
 }
 
 function buildDeck() {
@@ -98,7 +123,11 @@ function stay() {
             dealerSum = reduceAce(dealerSum, dealerAceCount);
             yourSum = reduceAce(yourSum, yourAceCount);
             canHit = false;
-            document.getElementById("hidden").src = "../Image/cards/" + hidden + ".png";
+            let hiddenImg = document.getElementById("hidden");
+            if (hiddenImg) {
+                hiddenImg.src = "../Image/cards/" + hidden + ".png";
+            }
+            
             let message = "";
             if (yourSum > 21) {
                 message = "Perdu !";
