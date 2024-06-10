@@ -168,5 +168,9 @@ async function loadCurrent() {
     }
 }
 
+function feedWallet(){
+    currentPlayer.addToken(parseInt(document.getElementById('depot-amount').value));
+}
+
 window.addEventListener('load', loadCurrent);
 window.addEventListener('beforeunload', saveCurrent);

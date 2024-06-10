@@ -206,3 +206,7 @@ a{
 .item{
     padding: 5px;
 }
+
+#amount_button{
+    margin-top: 30px;
+}

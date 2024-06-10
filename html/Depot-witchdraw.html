@@ -6,7 +6,6 @@
     <title>Casinouille</title>
     <link rel= "stylesheet" href="../css/styles.css">
     <link rel= "stylesheet" href="../css/style-login.css">
-    <script src="../javascript/account.js"></script>
 </head>
 <body>
     <header>
@@ -50,34 +49,28 @@
     </header>
 
     <section>
-        <div class="form-container"></div>
-        <p class="title">Depot</p>
-        <form class="form">
-            <div class="input-group">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" placeholder="">
-            </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="">
-            </div>
-            <div class="input-group">
-                <label for="username">Amount</label>
-                <input type="number" name="Montant" id="firstname" placeholder="">
-            </div>
-            <div class="input-group">
-                <label for="username">Cards Number</label>
-                <input type="number" name="Montant" id="firstname" placeholder="">
-            </div>
-            <div class="input-group">
-                <label for="username">Expiration Date</label>
-                <input type="number" name="finalDate" id="firstname" placeholder="">
-            </div>
-            <div class="input-group">
-                <label for="username">Security Code</label>
-                <input type="number" name="SecurityCode" id="firstname" placeholder="">
-            </div>
-        </form>
+        <div class="form-container">
+            <p class="title">Depot</p>
+            <form class="form">
+                <div class="input-group">
+                    <label for="username">Amount</label>
+                    <input type="number" name="Montant" id="depot-amount" min="1" placeholder="">
+                </div>
+                <div class="input-group">
+                    <label for="username">Cards Number</label>
+                    <input type="text" name="Montant" id="depot-card" value="XXXX XXXX XXXX XXXX" placeholder="">
+                </div>
+                <div class="input-group">
+                    <label for="username">Expiration Date</label>
+                    <input type="text" name="finalDate" id="depot-date" value="XX/XX" placeholder="">
+                </div>
+                <div class="input-group">
+                    <label for="username">Security Code</label>
+                    <input type="text" name="SecurityCode" id="depot-code" value="XXX" placeholder="">
+                </div>
+                <input type="button" name="button" class="sign" id="amount_button" value="Submit" placeholder="" onclick="feedWallet()">
+            </form>
+        </div>
     </section>
 
     <footer>
@@ -86,6 +79,7 @@
         <p>Tous droits réservés.</p>
     </footer>
 
+    <script src="../javascript/account.js"></script>
     <script src="../javascript/nav-bar.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
