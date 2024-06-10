@@ -48,30 +48,30 @@
         </a>
     </header>
 
-    <section id="main-section">
+    <div id="main-section">
         <div class="form-container">
             <p class="title">Depot</p>
             <form class="form">
                 <div class="input-group">
-                    <label for="username">Amount</label>
-                    <input type="number" name="Montant" id="depot-amount" min="1" placeholder="">
+                    <label for="depot-amount">Amount</label>
+                    <input type="number" name="Montant" id="depot-amount" min="1">
                 </div>
                 <div class="input-group">
-                    <label for="username">Cards Number</label>
-                    <input type="text" name="Montant" id="depot-card" value="XXXX XXXX XXXX XXXX" placeholder="">
+                    <label for="depot-card">Cards Number</label>
+                    <input type="text" name="Montant" id="depot-card" value="XXXX XXXX XXXX XXXX">
                 </div>
                 <div class="input-group">
-                    <label for="username">Expiration Date</label>
-                    <input type="text" name="finalDate" id="depot-date" value="XX/XX" placeholder="">
+                    <label for="depot-date">Expiration Date</label>
+                    <input type="text" name="finalDate" id="depot-date" value="XX/XX">
                 </div>
                 <div class="input-group">
-                    <label for="username">Security Code</label>
-                    <input type="text" name="SecurityCode" id="depot-code" value="XXX" placeholder="">
+                    <label for="depot-code">Security Code</label>
+                    <input type="text" name="SecurityCode" id="depot-code" value="XXX">
                 </div>
-                <input type="button" name="button" class="sign" id="amount_button" value="Submit" placeholder="" onclick="feedWallet()">
+                <input type="button" name="button" class="sign" id="amount_button" value="Submit" onclick="feedWallet()">
             </form>
         </div>
-    </section>
+    </div>
 
     <footer>
         <a href="./apropos.html">À propos </a>
