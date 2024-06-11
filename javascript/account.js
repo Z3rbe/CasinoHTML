@@ -125,8 +125,6 @@ async function signIn(){
 
             /*On le log*/
             logPlayer(newPlayer);
-
-            //on sauvegarde le json
         }
     }
 }
