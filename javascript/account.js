@@ -1,3 +1,4 @@
+/*Définition de la Class*/
 class Player{
     constructor(email, username, firstname, lastname, birthdate, phonenumber, adress, password, token){
         this.email = email;
@@ -32,6 +33,7 @@ class Player{
 
 var currentPlayer = null;
 
+/*Fonction pour charger les utilisateur depuis le fichier JSON*/
 async function loadUsers(url) {
     try {
         const players = [];
@@ -48,7 +50,7 @@ async function loadUsers(url) {
     }
 }
 
-
+/*On détermine si il s'agit d'un nouvel utilisateur*/
 function isNewUser(username, password, players){
     /*On parcours l'API*/
     for(let item of players){
@@ -57,11 +59,13 @@ function isNewUser(username, password, players){
     return true; 
 }
 
+/*On connecte le compte sélectionné*/
 function logPlayer(player){
     currentPlayer = player;
     currentPlayer.displayPlayer();
 }
 
+/*L'utilisateur rentre les identifiant d'un compte sur la page LogIn*/
 async function logIn() {
     // On récupère l'API
     let players;
@@ -89,7 +93,7 @@ async function logIn() {
     }
 }
 
-
+/*L'utilisateur crée un nouveau comtpe*/
 async function signIn(){
     // On récupère l'API
     let players;
@@ -129,6 +133,7 @@ async function signIn(){
     }
 }
 
+/*On sauvergarde les information de l'utilisateur connecté dans la session*/
 function saveCurrent() {
     if (currentPlayer) {
         let data = {
@@ -147,6 +152,7 @@ function saveCurrent() {
     }
 }
 
+/*On charge les informations de l'utilisateur connecté depuis la session*/
 async function loadCurrent() {
     try {
         const players = await loadUsers('../json/players.json');
@@ -166,6 +172,7 @@ async function loadCurrent() {
     }
 }
 
+/*On rempli le porte feuille*/
 function feedWallet(){
     currentPlayer.addToken(parseInt(document.getElementById('depot-amount').value));
 }
